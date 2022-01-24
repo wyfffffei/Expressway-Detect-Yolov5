@@ -1,7 +1,8 @@
 ﻿
 # YOLOV5_Cheat_Sheet
-> Written by wyfffffei
-> Written with [StackEdit](https://stackedit.io/).
+> @ wyfffffei
+
+
 
 ## Load YOLOV5 with Pytorch
 ### Simple Example
@@ -110,6 +111,10 @@ model = torch.hub.load('path/to/yolov5', 'custom', path='path/to/best.pt', sourc
 ><https://github.com/ultralytics/yolov5/issues/251>
 
 
+
+
+
+
 ## Visualize
 ### Tensorboard
 ```python
@@ -149,11 +154,19 @@ plot_results('path/to/results.csv')  # plot 'results.csv' as 'results.png'
 ```
 
 
+
+
+
 ## Weights & Bias (wandb)
+
 ><https://github.com/ultralytics/yolov5/issues/1289>
 
 
+
+
+
 ## Tips for Best Training Results
+
 ><https://github.com/ultralytics/yolov5/wiki/Tips-for-Best-Training-Results>
 Q: How to produce the best mAP and training results with YOLOV5 ?
 
@@ -178,5 +191,4 @@ Before modifying anything, **first train with default settings to establish a pe
 -   **Image size.**  COCO trains at native resolution of  `--img 640`, though due to the high amount of small objects in the dataset it can benefit from training at higher resolutions such as  `--img 1280`. If there are many small objects then custom datasets will benefit from training at native or higher resolution. Best inference results are obtained at the same  `--img`  as the training was run at, i.e. if you train at  `--img 1280`  you should also test and detect at  `--img 1280`.
 -   **Batch size.**  Use the largest  `--batch-size`  that your hardware allows for. Small batch sizes produce poor batchnorm statistics and should be avoided.
 -   **Hyperparameters.**  Default hyperparameters are in  [hyp.scratch.yaml](https://github.com/ultralytics/yolov5/blob/master/data/hyp.scratch.yaml). We recommend you train with default hyperparameters first before thinking of modifying any. In general, increasing augmentation hyperparameters will reduce and delay overfitting, allowing for longer trainings and higher final mAP. Reduction in loss component gain hyperparameters like  `hyp['obj']`  will help reduce overfitting in those specific loss components. For an automated method of optimizing these hyperparameters, see our  [Hyperparameter Evolution Tutorial](https://github.com/ultralytics/yolov5/issues/607).
-
 
