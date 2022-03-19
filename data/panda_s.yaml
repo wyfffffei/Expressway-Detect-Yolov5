@@ -1,0 +1,20 @@
+# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
+# PANDA dataset http://www.panda-dataset.com/Download.html
+# Example usage: python train.py --data panda.yaml
+# parent
+## ├── yolov5
+## └── datasets
+##     └── EXP_Detect
+##         └── static  ← downloads here
+##         └── dynamic
+
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: ../datasets/EXP_Detect/static  # dataset root dir
+train: train  # train images (relative to 'path') 128 images
+val: val      # val images (relative to 'path') 128 images
+test: test    # test images (optional)
+
+# Classes
+nc: 4  # number of classes
+names: ['person', 'car', 'fire', 'rubbish']  # class names
+
