@@ -106,51 +106,10 @@ def data_migration(pics):
     :param pics: picture name set
     """
     parent = "D:\\projects\\datasets\\panda\\Panda-Image\\PANDA_IMAGE\\image_train\\"
-    copy_path = "D:\\projects\\datasets\\EXP_Detect\\static\\train\\"
+    copy_path = "D:\\projects\\datasets\\EXP_Detect\\static\\images\\train\\"
     for pic in pics:
         pic = pic.replace('/', '\\')
         os.system(f"copy {parent+pic} {copy_path}")
-
-
-def extract_pictures_from_video(size):
-    """
-    :function: extract pictures from each video (windows script)
-    :parameter size: (0, 1) => (0, '3s/f', [00:00, 00:03, 00:06, ...]), (1, '30s/f', [00:00, 00:30, 01:00, ...])
-    :required: ffmpeg -> https://gist.github.com/steven2358/ba153c642fe2bb1e47485962df07c730
-    """
-    if size not in (0, 1):
-        return
-
-    v_parent = "D:\\Document\\res_DeepLearning\\Video1\\"
-    # v_parent = "D:\\Document\\res_DeepLearning\\Video2\\"
-    val_save_path = "D:\\projects\\datasets\\EXP_Detect\\static\\val\\"
-    test_save_path = "D:\\projects\\datasets\\EXP_Detect\\static\\test\\"
-
-    for file in os.listdir(v_parent):
-        size = 0  # 孤儿视频默认都小
-        if file[-4:] != '.mp4':
-            file = file + '\\' + os.listdir(v_parent+file)[0]  # 嵌套视频默认都大，取第一个视频
-            size = 1
-
-        for time in range(10):
-            if time % 2 == 0:
-                if size == 0:
-                    os.system("ffmpeg -i '{}' -ss 00:00:{}.000 -vframes 1 '{}{}_00{}.jpg' -hide_banner".format(
-                        v_parent + file.split()[1], time * 3, val_save_path, file.split('\\')[-1][:-4], time
-                    ))
-                elif size == 1:
-                    os.system("ffmpeg -i '{}' -ss 00:0{}:00.000 -vframes 1 '{}{}_00{}.jpg' -hide_banner".format(
-                        v_parent+file, int(time/2), val_save_path, file.split('\\')[-1][:-4], time
-                    ))
-            else:
-                if size == 0:
-                    os.system("ffmpeg -i '{}' -ss 00:00:{}.000 -vframes 1 '{}{}_00{}.jpg' -hide_banner".format(
-                        v_parent+file, time * 3, test_save_path, file.split('\\')[-1][:-4], time
-                    ))
-                elif size == 1:
-                    os.system("ffmpeg -i '{}' -ss 00:0{}:30.000 -vframes 1 '{}{}_00{}.jpg' -hide_banner".format(
-                        v_parent + file, time // 2, test_save_path, file.split('\\')[-1][:-4], time
-                    ))
 
 
 def data_split(data):
@@ -160,46 +119,16 @@ def data_split(data):
 
 
 def test():
-    v_parent = "D:\\Document\\res_DeepLearning\\Video1\\"
-    val_save_path = "D:\\projects\\datasets\\EXP_Detect\\static\\val\\"
-    test_save_path = "D:\\projects\\datasets\\EXP_Detect\\static\\test\\"
-    for file in os.listdir(v_parent):
-        size = 0  # 孤儿视频默认都小
-        if file[-4:] != '.mp4':
-            file = file + '\\' + os.listdir(v_parent + file)[0]  # 嵌套视频默认都大，取第一个视频
-            size = 1
-            print()
-
-        for time in range(10):
-            if time % 2 == 0:
-                if size == 0:
-                    print("ffmpeg -i '{}' -ss 00:00:{}.000 -vframes 1 '{}{}_00{}.jpg' -hide_banner".format(
-                        v_parent + file, time * 3, val_save_path, file.split('\\')[-1][:-4], time
-                    ))
-                elif size == 1:
-                    print("ffmpeg -i '{}' -ss 00:0{}:00.000 -vframes 1 '{}{}_00{}.jpg' -hide_banner".format(
-                        v_parent + file, int(time / 2), val_save_path, file.split('\\')[-1][:-4], time
-                    ))
-            else:
-                if size == 0:
-                    print("ffmpeg -i '{}' -ss 00:00:{}.000 -vframes 1 '{}{}_00{}.jpg' -hide_banner".format(
-                        v_parent + file, time * 3, test_save_path, file.split('\\')[-1][:-4], time
-                    ))
-                elif size == 1:
-                    print("ffmpeg -i '{}' -ss 00:0{}:30.000 -vframes 1 '{}{}_00{}.jpg' -hide_banner".format(
-                        v_parent + file, time // 2, test_save_path, file.split('\\')[-1][:-4], time
-                    ))
+    pass
 
 
 def main():
     test()
 
-    # show_category()
-    # train_pics = panda2YOLO()
-    # print(train_pics)
-    # data_migration(train_pics)
-    # extract_pictures_from_video(0)
-    # data_split(train_pics)
+    # show_category()  # 查看数据集标记种类
+    # train_pics = panda2YOLO()  # panda格式标记转换成yolo格式，保存于目标路径，返回被转换的图片名集合
+    # data_migration(train_pics)  # 将被转换的图片复制到目标路径
+    # data_split(train_pics)  # 数据集重新分割
 
 
 if __name__ == "__main__":
