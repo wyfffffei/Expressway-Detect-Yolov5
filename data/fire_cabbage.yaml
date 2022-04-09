@@ -1,0 +1,19 @@
+# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
+# Example usage: python train.py --data panda.yaml
+# parent
+## ├── yolov5
+## └── datasets
+##     └── EXP_Detect
+##         └── high_equ
+##         └── low_equ  ← downloads here
+
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: ../datasets/EXP_Detect/low_equ  # dataset root dir
+train: images/train  # train images (relative to 'path')
+val: images/val      # val images (relative to 'path')
+test: images/test    # test images (optional)
+
+# Classes
+nc: 4  # number of classes
+names: ['person', 'car', 'fire', 'rubbish']  # class names
+

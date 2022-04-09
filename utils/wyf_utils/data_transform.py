@@ -86,9 +86,9 @@ def show_category():
     """
     function: test the number of category (panda)
     """
-    # ano_file_path = "D:/projects/datasets/panda/PANDA_Crowd/head_bbox_annotations.json"
+    ano_file_path = "D:/projects/datasets/panda/PANDA_Crowd/head_bbox_annotations.json"
     # ano_file_path = "D:/projects/datasets/panda/Panda-Image/PANDA_IMAGE/image_annos/person_bbox_train.json"
-    ano_file_path = "D:/projects/datasets/panda/Panda-Image/PANDA_IMAGE/image_annos/vehicle_bbox_train.json"
+    # ano_file_path = "D:/projects/datasets/panda/Panda-Image/PANDA_IMAGE/image_annos/vehicle_bbox_train.json"
 
     with open(ano_file_path) as data:
         ano = json.load(data)
@@ -123,9 +123,9 @@ def test():
 
 
 def main():
-    test()
+    # test()
 
-    # show_category()  # 查看数据集标记种类
+    show_category()  # 查看数据集标记种类
     # train_pics = panda2YOLO()  # panda格式标记转换成yolo格式，保存于目标路径，返回被转换的图片名集合
     # data_migration(train_pics)  # 将被转换的图片复制到目标路径
     # data_split(train_pics)  # 数据集重新分割
