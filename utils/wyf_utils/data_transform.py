@@ -86,9 +86,9 @@ def show_category():
     """
     function: test the number of category (panda)
     """
-    ano_file_path = "D:/projects/datasets/panda/PANDA_Crowd/head_bbox_annotations.json"
+    # ano_file_path = "D:/projects/datasets/panda/PANDA_Crowd/head_bbox_annotations.json"
     # ano_file_path = "D:/projects/datasets/panda/Panda-Image/PANDA_IMAGE/image_annos/person_bbox_train.json"
-    # ano_file_path = "D:/projects/datasets/panda/Panda-Image/PANDA_IMAGE/image_annos/vehicle_bbox_train.json"
+    ano_file_path = "D:/projects/datasets/panda/Panda-Image/PANDA_IMAGE/image_annos/vehicle_bbox_train.json"
 
     with open(ano_file_path) as data:
         ano = json.load(data)
